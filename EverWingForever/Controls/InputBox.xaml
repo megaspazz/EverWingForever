@@ -1,0 +1,15 @@
+﻿<Window x:Class="EverWingForever.InputBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EverWingForever"
+        mc:Ignorable="d"
+        Title="InputBox" SizeToContent="Height" Width="300">
+    <StackPanel>
+        <StackPanel x:Name="spBoxes">
+        </StackPanel>
+        <Button x:Name="btnOK" IsDefault="True" Content="OK" Click="btnOK_Click" />
+        <Button x:Name="btnCancel" IsCancel="True" Content="Cancel" Click="btnCancel_Click" />
+    </StackPanel>
+</Window>
