@@ -21,7 +21,7 @@ namespace EverWingForever
     public partial class MainWindow : Window
     {
         // TEMPORARY: Initialize the type of bot to run here.
-        private EverWingBot _bot = new StationaryBot();
+        private EverWingBot _bot = new SweepBot();
 
         public MainWindow()
         {

@@ -39,7 +39,7 @@ namespace EverWingForever
         //   |   |
         //   +---#
         // The # characters define the points that define the rectangle.
-        private Rectangle GAME_BOUNDS = new Rectangle(-971, 9, 662, 1177);
+        private Rectangle GAME_BOUNDS = new Rectangle(-971, 9, 661, 1177);
 
         private bool _running = false;
         private IKeyboardMouseEvents _keyHook = Hook.GlobalEvents();
@@ -90,7 +90,9 @@ namespace EverWingForever
         }
 
         /// <summary>
-        /// Child classes should implement this method to define what the bot actually does.
+        /// Child classes should implement this method to define what the bot actually does.  Make sure the implementation allows the bot to loop forever.
+        /// The general strategy is to spam click the GAME_OVER_OK button and spam clicking to start the game.
+        /// You need to guarantee that the bot will not click LEVEL_UP_OK within ~5 seconds of starting a new game, or it will waste resources buying power-ups.
         /// </summary>
         protected abstract void RunInternal();
 
@@ -206,14 +208,25 @@ namespace EverWingForever
 
         public void MoveRight(double dx)
         {
-            int px = UpscaleX(dx);
-            ClickAndDragRelative(0, MOVEMENT_Y, px, MOVEMENT_Y);
+            ClickAndDragRelative(0, MOVEMENT_Y, dx, MOVEMENT_Y);
         }
 
         public void MoveLeft(double dx)
         {
             int px = UpscaleX(dx);
-            ClickAndDragRelative(px, MOVEMENT_Y, 0, MOVEMENT_Y);
+            ClickAndDragRelative(dx, MOVEMENT_Y, 0, MOVEMENT_Y);
+        }
+
+        public void Move(double dx)
+        {
+            if (dx > 0)
+            {
+                MoveRight(dx);
+            }
+            else
+            {
+                MoveLeft(-dx);
+            }
         }
 
         public void ClickNewGame()
