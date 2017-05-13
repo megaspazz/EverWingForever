@@ -4,8 +4,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using Gma.System.MouseKeyHook;
 using System.Windows.Forms;
 
 namespace EverWingForever
@@ -42,47 +40,6 @@ namespace EverWingForever
         private Rectangle GAME_BOUNDS = new Rectangle(-971, 9, 661, 1177);
 
         private bool _running = false;
-        private IKeyboardMouseEvents _keyHook = Hook.GlobalEvents();
-
-        public EverWingBot()
-        {
-            _keyHook.KeyDown += ProcessKeyboardHook;
-        }
-
-        private void ProcessKeyboardHook(object sender, KeyEventArgs e)
-        {
-            if (e.Control && e.Shift && e.Alt)
-            {
-                switch (e.KeyCode)
-                {
-                    case Keys.F4:
-                    case Keys.A:
-                        Console.WriteLine("STOPPED");
-                        Stop();
-                        break;
-                    case Keys.F5:
-                    case Keys.S:
-                        RunForeverAsync();
-                        break;
-                    case Keys.W:
-                        Run();
-                        break;
-
-                    // Debugging cases below.
-
-                    case Keys.D1:
-                        ClickRelative(0, 0);
-                        break;
-                    case Keys.D2:
-                        Console.WriteLine(System.Windows.Forms.Cursor.Position);
-                        break;
-                    case Keys.D3:
-                        System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
-                        System.Windows.Forms.Cursor.Position = new System.Drawing.Point(pt.X, pt.Y + 80);
-                        break;
-                }
-            }
-        }
 
         public void SetLeft(int left)
         {

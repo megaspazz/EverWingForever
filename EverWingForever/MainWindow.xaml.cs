@@ -20,13 +20,42 @@ namespace EverWingForever
     /// </summary>
     public partial class MainWindow : Window
     {
-        // TEMPORARY: Initialize the type of bot to run here.
-        private EverWingBot _bot = new SweepBot();
+        // The currently selected bot.
+        private EverWingBot _bot;
+
+        // Manage the keyboard hooks for the bots.
+        private BotsHookManager _hookManager = new BotsHookManager();
+
+        // A map of Radio Buttons to bots, which is used in the Radio Button events to update the currently selected bot.
+        private Dictionary<object, EverWingBot> _map = new Dictionary<object, EverWingBot>();
 
         public MainWindow()
         {
             InitializeComponent();
+
+            // Map the Radio Buttons to the bots that they are associated with.
+            // Also, set the default for the first bot.  This should match the Radio Button that is checked by default.
+            _map[this.radStationaryBot] = new StationaryBot();
+            _map[this.radSideStrategyBot] = new SideStrategyBot();
+            _map[this.radRandomStrafeBot] = new RandomStrafeBot();    // ← Set the default bot like so.
+            _map[this.radSweepBot] = _bot = new SweepBot();
+            _map[this.radSweepAssistBot] = new SweepAssistBot();
+
+            // Activate the default bot.
+            _hookManager.Activate(_bot);
         }
+
+        private void UpdateSelelectedBot(object sender, RoutedEventArgs e)
+        {
+            EverWingBot activeBot;
+            if (_map.TryGetValue(sender, out activeBot))
+            {
+                _bot = activeBot;
+                _hookManager.Activate(_bot);
+            }
+        }
+
+        #region Setting Coordinates (possibly deprecated code)
 
         private void btnTop_Click(object sender, RoutedEventArgs e)
         {
@@ -100,9 +129,6 @@ namespace EverWingForever
             }
         }
 
-        private void btnStationaryBot_Click(object sender, RoutedEventArgs e)
-        {
-            // NYI
-        }
+        #endregion
     }
 }

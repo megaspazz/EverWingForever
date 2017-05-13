@@ -77,6 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bots\BotsHookManager.cs" />
     <Compile Include="Bots\EverWingBot.cs" />
     <Compile Include="Bots\RandomStrafeBot.cs" />
     <Compile Include="Bots\SideStrategyBot.cs" />
