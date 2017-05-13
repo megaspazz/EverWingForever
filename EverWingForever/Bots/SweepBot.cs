@@ -11,11 +11,13 @@ namespace EverWingForever
     {
         private int _iter = 0;
 
+        private int _gameTime = 60000;
+
         protected override void RunInternal()
         {
-            if (_iter < 32)
+            if (_iter < 320)
             {
-                if (_iter < 20)
+                if (_iter < 200)
                 {
                     ClickGameOverOK();
                 }
@@ -30,7 +32,7 @@ namespace EverWingForever
             {
                 ClickLevelUpOK();
             }
-            _iter = (_iter + 1) % 33;
+            _iter = (_iter + 1) % 321;
         }
     }
 }
