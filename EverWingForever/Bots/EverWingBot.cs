@@ -56,12 +56,20 @@ namespace EverWingForever
                 switch (e.KeyCode)
                 {
                     case Keys.F4:
+                    case Keys.A:
                         Console.WriteLine("STOPPED");
                         Stop();
                         break;
                     case Keys.F5:
+                    case Keys.S:
                         RunForeverAsync();
                         break;
+                    case Keys.W:
+                        Run();
+                        break;
+
+                    // Debugging cases below.
+
                     case Keys.D1:
                         ClickRelative(0, 0);
                         break;
@@ -120,9 +128,25 @@ namespace EverWingForever
         /// </summary>
         public virtual bool Run()
         {
+            return RunController(true);
+        }
+
+        public virtual bool RunContinue()
+        {
+            return RunController(false);
+        }
+
+        private bool RunController(bool newGame)
+        {
             if (!_running)
             {
-                Setup();
+                // Only perform the Setup if it is a new game.
+                if (!newGame)
+                {
+                    Setup();
+                }
+
+                RunInternal();
                 _running = false;
                 return true;
             }

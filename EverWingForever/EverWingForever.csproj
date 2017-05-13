@@ -81,6 +81,7 @@
     <Compile Include="Bots\RandomStrafeBot.cs" />
     <Compile Include="Bots\SideStrategyBot.cs" />
     <Compile Include="Bots\StationaryBot.cs" />
+    <Compile Include="Bots\SweepAssistBot.cs" />
     <Compile Include="Bots\SweepBot.cs" />
     <Compile Include="Controls\InputBox.xaml.cs">
       <DependentUpon>InputBox.xaml</DependentUpon>
