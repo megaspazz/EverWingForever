@@ -11,7 +11,13 @@ namespace EverWingForever
     {
         private static readonly Random RNG = new Random();
 
-        private int _iter = 0;
+        private int _iter;
+        
+        protected override void SetupInternal()
+        {
+            // Reset the private iteration counter.
+            _iter = 0;
+        }
 
         protected override void RunInternal()
         {

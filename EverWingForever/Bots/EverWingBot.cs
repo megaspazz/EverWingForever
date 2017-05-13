@@ -65,6 +65,13 @@ namespace EverWingForever
                     case Keys.D1:
                         ClickRelative(0, 0);
                         break;
+                    case Keys.D2:
+                        Console.WriteLine(System.Windows.Forms.Cursor.Position);
+                        break;
+                    case Keys.D3:
+                        System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
+                        System.Windows.Forms.Cursor.Position = new System.Drawing.Point(pt.X, pt.Y + 80);
+                        break;
                 }
             }
         }
@@ -97,6 +104,17 @@ namespace EverWingForever
         protected abstract void RunInternal();
 
         /// <summary>
+        /// Chilc classes should override this method if it requires pre-computations or resetting the previous run's state.
+        /// </summary>
+        protected virtual void SetupInternal() { }
+
+        public virtual void Setup()
+        {
+            _running = true;
+            SetupInternal();
+        }
+
+        /// <summary>
         /// Runs a single iteration of the bot.
         /// <returns>Whether the bot started successfully.</returns>
         /// </summary>
@@ -104,8 +122,7 @@ namespace EverWingForever
         {
             if (!_running)
             {
-                _running = true;
-                RunInternal();
+                Setup();
                 _running = false;
                 return true;
             }
@@ -123,7 +140,7 @@ namespace EverWingForever
         {
             if (!_running)
             {
-                _running = true;
+                Setup();
                 while (_running)
                 {
                     RunInternal();
