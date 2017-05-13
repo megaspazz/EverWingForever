@@ -1,6 +1,11 @@
 # EverWingForever
 EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
 
+## In-Game Settings
+
+1. Make sure that you turn the Movement Speed to LOW.  This sets the character movement to be 1:1 with the mouse movement in pixels.  Otherwise, the movement calculations will not be correct.
+2. If the game is lagging, try running with LOW graphics settings in Chrome or Firefox.  From preliminary testing, running the bot had poor performance in Edge.
+
 ## Instructions
 
 1. Set up the top/left/right/bottom positions of the game screen that you plan to bot in.  These will reset to the defaults every time you restart the program, so if it's annoying to input them every time, you can just hard-code the defaults for your computer/settings in EverWingBot.cs, but please don't commit the changes to the default coordinates.
