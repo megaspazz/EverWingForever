@@ -13,6 +13,11 @@ namespace EverWingForever
     {
         private static InputSimulator _sim = new InputSimulator();
 
+        public static void LeftDown()
+        {
+            _sim.Mouse.LeftButtonDown();
+        }
+
         public static void LeftClick(Point pt)
         {
             Cursor.Position = pt;

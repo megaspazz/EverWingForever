@@ -41,6 +41,9 @@ namespace EverWingForever
                     case Keys.S:
                         _activeBot.RunForeverAsync();
                         break;
+                    case Keys.D:
+                        ToggleActiveBot();
+                        break;
                     case Keys.W:
                         _activeBot.Run();
                         break;
@@ -71,9 +74,21 @@ namespace EverWingForever
                         _activeBot.RunForeverAsync();
                         break;
                     case Keys.C:
-                        _activeBot.Run();
+                        ToggleActiveBot();
                         break;
                 }
+            }
+        }
+
+        private void ToggleActiveBot()
+        {
+            if (_activeBot.IsReady)
+            {
+                _activeBot.RunForeverAsync();
+            }
+            else
+            {
+                _activeBot.Stop();
             }
         }
 

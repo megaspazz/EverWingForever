@@ -39,8 +39,10 @@ namespace EverWingForever
         //   +---#
         // The # characters define the points that define the rectangle.
         private Rectangle GAME_BOUNDS = new Rectangle(-971, 9, 661, 1177);
-
+        
         private bool _running = false;
+
+        public bool IsReady { get; protected set; } = true;
 
         public void SetLeft(int left)
         {
@@ -82,6 +84,7 @@ namespace EverWingForever
 
         public virtual void Setup()
         {
+            this.IsReady = false;
             _running = true;
             SetupInternal();
         }
@@ -89,6 +92,7 @@ namespace EverWingForever
         public virtual void Finish()
         {
             FinishInternal();
+            this.IsReady = true;
             _running = false;
         }
 
@@ -108,7 +112,7 @@ namespace EverWingForever
 
         private bool RunController(bool newGame)
         {
-            if (!_running)
+            if (this.IsReady)
             {
                 // Only perform the Setup if it is a new game.
                 if (!newGame)
@@ -132,7 +136,7 @@ namespace EverWingForever
         /// </summary>
         public virtual bool RunForever()
         {
-            if (!_running)
+            if (this.IsReady)
             {
                 Setup();
                 while (_running)
@@ -149,22 +153,40 @@ namespace EverWingForever
         }
 
         /// <summary>
-        /// Runs the bot forever in another thread, so that it won't block the UI.
-        /// <returns>Whether the bot started successfully.</returns>
+        /// 
         /// </summary>
-        public virtual bool RunForeverAsync()
+        /// <returns></returns>
+        public virtual Task RunAsync()
         {
-            if (!_running)
+            if (this.IsReady)
             {
-                Task.Factory.StartNew(() =>
+                return Task.Factory.StartNew(() =>
                 {
-                    RunForever();
+                    Run();
                 });
-                return true;
             }
             else
             {
-                return false;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Runs the bot forever in another thread, so that it won't block the UI.
+        /// <returns>Whether the bot started successfully.</returns>
+        /// </summary>
+        public virtual Task RunForeverAsync()
+        {
+            if (this.IsReady)
+            {
+                return Task.Factory.StartNew(() =>
+                {
+                    RunForever();
+                });
+            }
+            else
+            {
+                return null;
             }
         }
 

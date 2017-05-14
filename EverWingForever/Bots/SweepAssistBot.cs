@@ -15,16 +15,36 @@ namespace EverWingForever
     /// </summary>
     class SweepAssistBot : EverWingBot
     {
+        // This setting determines the position the SweepAssistBot will place the character after it is done.
+        private double _endPosition;
+
+        // This setting determines whether the SweepAssistBot will automatically hold down the left mouse button when it is done.
+        private bool _leftDown;
+
+        // Default constructor currently doesn't need to do anything.
+        public SweepAssistBot() { }
+
+        public SweepAssistBot(double endPosition, bool leftDown)
+            : this()
+        {
+            _endPosition = endPosition;
+            _leftDown = leftDown;
+        }
+
         protected override void RunInternal()
         {
             SweepRight(0.1, 5, 10);
             SweepLeft(0.1, 5, 10);
         }
 
-        // Finish with the character in the middle of the screen and the cursor on the character.
+        // Move the character to the position specified, and hold the left mouse button down depending on the setting.
         protected override void FinishInternal()
         {
-            MoveRight(0.5);
+            Move(_endPosition);
+            if (_leftDown)
+            {
+                InputWrapper.LeftDown();
+            }
         }
     }
 }

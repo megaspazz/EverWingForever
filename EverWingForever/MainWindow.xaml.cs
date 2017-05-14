@@ -44,9 +44,9 @@ namespace EverWingForever
             // Also, set the default for the first bot.  This should match the Radio Button that is checked by default.
             _map[this.radStationaryBot] = new StationaryBot();
             _map[this.radSideStrategyBot] = new SideStrategyBot();
-            _map[this.radRandomStrafeBot] = new RandomStrafeBot();    // ← Set the default bot like so.
-            _map[this.radSweepBot] = _bot = new SweepBot();
-            _map[this.radSweepAssistBot] = new SweepAssistBot();
+            _map[this.radRandomStrafeBot] = new RandomStrafeBot();
+            _map[this.radSweepBot] = _bot = new SweepBot();    // ← Set the default bot like so.
+            _map[this.radSweepAssistBot] = new SweepAssistBot(0.5, true);    // Change the parameters to the SweepAssistBot to suit your preferences.
 
             // Activate the default bot.
             _hookManager.Activate(_bot);
