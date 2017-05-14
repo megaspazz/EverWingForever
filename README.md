@@ -1,6 +1,17 @@
 # EverWingForever
 EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
 
+## Getting the Code
+
+1.  Download Git.  Since this program only works on Windows as far as I know, you might as well get Git for Windows.  You can just Google it and download and install the latest version.
+2.  Navigate to the folder where you want to save the source code.  Git for Windows has a convenient integration with the right-click context menu option "Open Git Bash here" to make things easier.
+3.  To get the repository the first time:
+    a.  `git clone https://github.com/megaspazz/EverWingForever.git` Note that this will create a new folder in your current directory.
+    b.  `cd EverWingForever` Navigate into the newly created folder.
+3.  To get updates, make sure that you're already in the "EverWingForever" folder.
+    a.  `git reset --hard HEAD` Remove all your local changes.  You might be do a `git stash` instead to save your local modifications for later.
+	b.  `git pull origin master` Get the most recent version.
+
 ## In-Game Settings
 
 1.  Make sure that you have your DPI at 100% in your Windows settings.  This might be automatically set to something else if you have a high resolution display on a small laptop or a 4K monitor.  If you change the DPI, you may have to restart your computer for the coordinate computations to take effect.  Since it was not extensively tested on other DPI settings, it is probably easiest to just set the DPI to 100% for now.
