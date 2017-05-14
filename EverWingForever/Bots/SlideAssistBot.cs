@@ -8,21 +8,22 @@ using System.Threading.Tasks;
 namespace EverWingForever
 {
     /// <summary>
-    /// This bot will just strafe from left to right, and then from right to left.
+    /// This bot will just strafe from left to right repeatedly.
     /// Its purpose is to assist the player by allowing the player to toggle auto-strafe.
-    /// </summary>
-    class SweepAssistBot : AssistBot
+    class SlideAssistBot : AssistBot
     {
         // Default constructor just calls parent class constructor.
-        public SweepAssistBot() : base() { }
+        public SlideAssistBot() : base() { }
 
         // Parameterized constructor just calls parent class constructor.
-        public SweepAssistBot(double endPosition, bool leftDown) : base(endPosition, leftDown) { }
-        
+        public SlideAssistBot(double endPosition, bool leftDown) : base(endPosition, leftDown) { }
+
         protected override void RunInternal()
         {
-            SweepRight(0.1, 5, 10);
-            SweepLeft(0.1, 5, 10);
+            Sweep(0.1, 10, 9);
+            MoveLeft(1);
+            MoveRight(0.05);
+            Thread.Sleep(10);
         }
     }
 }

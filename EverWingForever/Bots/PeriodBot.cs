@@ -15,7 +15,10 @@ namespace EverWingForever
         // Stopwatch to keep track of the current time in the period.
         // During the last 6 seconds of the period, the bot will not click the LEVEL_UP_OK button.
         // After each period, the bot will click the LEVEL_UP_OK button once.
-        private Stopwatch _sw = new Stopwatch();
+        private Stopwatch _swPeriod = new Stopwatch();
+
+        // The stopwatch for keeping track of when to click GAME_OVER_OK.
+        private Stopwatch _swGameOver = new Stopwatch();
 
         // Currently, the the number of games to level up is hard-coded.
         private int _gamesToLevelUp = 100;
@@ -35,33 +38,47 @@ namespace EverWingForever
             _periodTimeMs = 1000 * Math.Max(Math.Min(calcTime, 160), 16);
         }
 
-        protected override void SetupInternal()
+        protected override sealed void SetupInternal()
         {
-            // Restart the Stopwatch.
-            _sw.Restart();
+            // Restart the Stopwatches.
+            _swPeriod.Restart();
+            _swGameOver.Restart();
+
+            // Call child setup 
         }
 
-        protected abstract void RunPeriod();
-
-        protected override void RunInternal()
+        protected override sealed void RunInternal()
         {
-            // Cache the elapsed millseconds from the Stopwatch.
-            long elapsedMs = _sw.ElapsedMilliseconds;
+            // Cache the elapsed millseconds from the Stopwatches.
+            long periodMs = _swPeriod.ElapsedMilliseconds;
+            long gameOverMs = _swGameOver.ElapsedMilliseconds;
 
+            // Click the GAME_OVER_OK button at most every half-second.
             // Give 6s at the end of the period without clicking the GAME_OVER_OK button so that the bot won't accidentally buy power-ups when clicking LEVEL_UP_OK.
-            if (elapsedMs < _periodTimeMs - 6000)
+            if (gameOverMs >= 500 && periodMs < _periodTimeMs - 6000)
             {
                 ClickGameOverOK();
+                _swGameOver.Restart();
             }
 
             RunPeriod();
 
             // After a full period, click the LEVEL_UP_OK button and restart the Stopwatch for the next period.
-            if (elapsedMs > _periodTimeMs)
+            if (periodMs > _periodTimeMs)
             {
                 ClickLevelUpOK();
-                _sw.Restart();
+                _swPeriod.Restart();
             }
         }
+
+        /// <summary>
+        /// Performs setup necessary in children classes.  This is analogous to the EverWing.SetupInternal method.
+        /// </summary>
+        protected virtual void SetupPeriod() { }
+
+        /// <summary>
+        /// Child classes must override this to determine the bot's behavior.  This is analogous to the EverWing.RunInternal method.
+        /// </summary>
+        protected abstract void RunPeriod();
     }
 }

@@ -13,9 +13,10 @@ namespace EverWingForever
         // Slide all the way to the right and then reset back to the left.
         protected override void RunPeriod()
         {
-            Sweep(0.1, 9, 10);
+            Sweep(0.1, 10, 9);
             MoveLeft(1);
-            Thread.Sleep(9);
+            MoveRight(0.05);
+            Thread.Sleep(10);
         }
     }
 }

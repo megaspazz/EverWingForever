@@ -13,11 +13,8 @@ namespace EverWingForever
         // The direction that the bot will sweep in the next iteration.
         private int _dir;
 
-        protected override void SetupInternal()
+        protected override void SetupPeriod()
         {
-            // Make sure to call the PeriodBot setup to reset the internal Stopwatch.
-            base.SetupInternal();
-
             // Reset the direction.
             _dir = 1;
         }

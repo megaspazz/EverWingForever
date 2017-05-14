@@ -77,11 +77,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bots\AssistBot.cs" />
     <Compile Include="Bots\BotsHookManager.cs" />
     <Compile Include="Bots\EverWingBot.cs" />
     <Compile Include="Bots\PeriodBot.cs" />
     <Compile Include="Bots\RandomStrafeBot.cs" />
     <Compile Include="Bots\SideStrategyBot.cs" />
+    <Compile Include="Bots\SlideAssistBot.cs" />
     <Compile Include="Bots\SlideBot.cs" />
     <Compile Include="Bots\StationaryBot.cs" />
     <Compile Include="Bots\SweepAssistBot.cs" />
