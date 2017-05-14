@@ -16,7 +16,7 @@ EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
 
 1.  Make sure that you have your DPI at 100% in your Windows settings.  This might be automatically set to something else if you have a high resolution display on a small laptop or a 4K monitor.  If you change the DPI, you may have to restart your computer for the coordinate computations to take effect.  Since it was not extensively tested on other DPI settings, it is probably easiest to just set the DPI to 100% for now.
 2.  Make sure that you turn the Movement Speed to LOW.  This sets the character movement to be 1:1 with the mouse movement in pixels.  Otherwise, the movement calculations will not be correct.
-3.  If the game is lagging, try running with LOW graphics settings in Chrome or Firefox.  From preliminary testing, running the bot had poor performance in Edge.
+3.  If the game is lagging, try running with LOW graphics settings in Chrome or Firefox.  From preliminary testing, Edge had poor performance running the bot.
 
 ## Instructions
 

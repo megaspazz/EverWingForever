@@ -46,6 +46,7 @@ namespace EverWingForever
             _map[this.radSideStrategyBot] = new SideStrategyBot();
             _map[this.radRandomStrafeBot] = new RandomStrafeBot();
             _map[this.radSweepBot] = _bot = new SweepBot();    // ← Set the default bot like so.
+            _map[this.radSlideBot] = new SlideBot();
             _map[this.radSweepAssistBot] = new SweepAssistBot(0.5, true);    // Change the parameters to the SweepAssistBot to suit your preferences.
 
             // Activate the default bot.

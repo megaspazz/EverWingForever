@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EverWingForever"
         mc:Ignorable="d"
-        Title="EverWing Forever" Height="350" Width="525">
+        Title="EverWing Forever" Width="300" SizeToContent="Height">
     <StackPanel>
         <GroupBox Header="Select Bot Type" Margin ="10" Padding="10">
             <StackPanel>
@@ -13,8 +13,11 @@
                 <RadioButton x:Name="radSideStrategyBot" Content="Side Strategy Bot" ToolTip="Bot that teleports between the left and right sides of the screen.  Note that stopping this bot has up to 15 seconds of delay." Checked="UpdateSelelectedBot" />
                 <RadioButton x:Name="radRandomStrafeBot" Content="Random Strafe Bot" ToolTip="Bot that randomly moves around." Checked="UpdateSelelectedBot" />
                 <RadioButton x:Name="radSweepBot" Content="Sweep Bot (recommended)" IsChecked="True" ToolTip="Bot that rapidly sweeps from left to right, and then right to left.  This allows it to kill everything on the screen collect almost everything that falls, but it will surely die to meteors.  Note that this is the currently the recommended bot for farming coins." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radSweepAssistBot" Content="Sweep Assist Bot" ToolTip="Bot that just goes from left to right, and then right to left.  This bot guarantees that stopping it will end on the left side of the screen with the cursor on the character.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSlideBot" Content="Slide Bot" ToolTip="Bot that just repeatedly scans from left to right.  This allows it to kill everything on the screen and collect almost everything that falls, but it will surely die to meteors." Checked="UpdateSelelectedBot" />
                 <Separator Margin="0 10"/>
+                <RadioButton x:Name="radSweepAssistBot" Content="Sweep Assist Bot" ToolTip="Bot that just goes from left to right, and then right to left.  This bot guarantees that stopping it will end on the left side of the screen with the cursor on the character.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
+                <Separator Margin="0 10 0 2"/>
+                <Separator Margin="0 2 0 10"/>
                 <CheckBox x:Name="chkEnableConveienceKeys" Content="Enable Convenience Keys" IsChecked="True" ToolTip="Enable shortcuts that are easy to use in game, but might be disruptive if you leave the program open while using your computer." Checked="chkEnableConveienceKeys_Checked" Unchecked="chkEnableConveienceKeys_Unchecked" />
             </StackPanel>
         </GroupBox>
