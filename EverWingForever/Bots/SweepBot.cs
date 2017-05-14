@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -9,13 +10,19 @@ namespace EverWingForever
 {
     class SweepBot : EverWingBot
     {
-        private int _iter;
+        // The number of milliseconds in one period.
+        private double _periodTimeMs;
+
+        // The direction that the bot will sweep in the next iteration.
+        private int _dir;
+
+        // Stopwatch to keep track of the current time in the period.
+        // During the last 6 seconds of the period, the bot will not click the LEVEL_UP_OK button.
+        // After each period, the bot will click the LEVEL_UP_OK button once.
+        private Stopwatch _sw = new Stopwatch();
 
         // Currently, the the number of games to level up is hard-coded.
         private int _gamesToLevelUp = 100;
-
-        // The maximum number of iterations before clicking the LEVEL_UP_OK button.
-        private int _maxIters;
 
         public SweepBot()
         {
@@ -29,38 +36,39 @@ namespace EverWingForever
             double calcTime = 6 * Math.Sqrt(_gamesToLevelUp);
 
             // Set the period time as the calculated optimal time, but must be within the range [16, 160] seconds.
-            double periodTime = Math.Max(Math.Min(calcTime, 160), 16);
-
-            // We will set the total number iterations the total number of strafes (including left and right) to fill up the period time.
-            // Note the extra one at the end, which is the final iteration in which the LEVEL_UP_OK button is clicked.
-            _maxIters = (int)(2 * (periodTime / 0.100) + 1);
+            _periodTimeMs = 1000 * Math.Max(Math.Min(calcTime, 160), 16);
         }
 
         protected override void SetupInternal()
         {
-            // Reset the private iteration counter.
-            _iter = 0;
+            // Restart the Stopwatch.
+            _sw.Restart();
+
+            // Reset the direction.
+            _dir = 1;
         }
 
         protected override void RunInternal()
         {
-            if (_iter < _maxIters)
-            {
-                // It is assumed that each iteration will take 50ms, so 120 iterations is 6s.
-                if (_iter < _maxIters - 120)
-                {
-                    ClickGameOverOK();
-                }
+            // Cache the elapsed millseconds from the Stopwatch.
+            long elapsedMs = _sw.ElapsedMilliseconds;
 
-                // In this loop, each strafe (left or right) takes 50ms.
-                int dir = (_iter % 2 == 0) ? 1 : -1;
-                Sweep(dir * 0.1, 5, 10);
+            // Give 6s at the end of the period without clicking the GAME_OVER_OK button so that the bot won't accidentally buy power-ups when clicking LEVEL_UP_OK.
+            if (elapsedMs < _periodTimeMs - 6000)
+            {
+                ClickGameOverOK();
             }
-            else
+
+            // Sweep in the current direction and reverse the direction for the next iteration.
+            Sweep(_dir * 0.1, 5, 10);
+            _dir *= -1;
+
+            // After a full period, click the LEVEL_UP_OK button and restart the Stopwatch for the next period.
+            if (elapsedMs > _periodTimeMs)
             {
                 ClickLevelUpOK();
+                _sw.Restart();
             }
-            _iter = (_iter + 1) % _maxIters;
         }
     }
 }
