@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -69,14 +70,26 @@ namespace EverWingForever
         protected abstract void RunInternal();
 
         /// <summary>
-        /// Chilc classes should override this method if it requires pre-computations or resetting the previous run's state.
+        /// Child classes should override this method if they require pre-computating run parameters or resetting the previous run's state.
         /// </summary>
         protected virtual void SetupInternal() { }
+
+        /// <summary>
+        /// Child classes should override this method if they require some actions after the run is finished.
+        /// It is best to keep this function's runtime duration short so that the bot will feel more responsive to the user.
+        /// </summary>
+        protected virtual void FinishInternal() { }
 
         public virtual void Setup()
         {
             _running = true;
             SetupInternal();
+        }
+
+        public virtual void Finish()
+        {
+            FinishInternal();
+            _running = false;
         }
 
         /// <summary>
@@ -104,7 +117,7 @@ namespace EverWingForever
                 }
 
                 RunInternal();
-                _running = false;
+                Finish();
                 return true;
             }
             else
@@ -126,6 +139,7 @@ namespace EverWingForever
                 {
                     RunInternal();
                 }
+                Finish();
                 return true;
             }
             else
@@ -224,6 +238,38 @@ namespace EverWingForever
             else
             {
                 MoveLeft(-dx);
+            }
+        }
+
+        public void SweepRight(double dx, int waitTimeMs, int iters)
+        {
+            Sweep(dx, waitTimeMs, iters);
+        }
+
+        public void SweepLeft(double dx, int waitTimeMs, int iters)
+        {
+            Sweep(-dx, waitTimeMs, iters);
+        }
+
+        /// <summary>
+        /// Performs a sweep by moving the specified distance a certain number of times, waiting in between each.
+        /// This means that the total time this will take in milliseconds is (waitTimeMs * iters).
+        /// </summary>
+        /// <param name="dx">The relative distance to travel in each iteration.</param>
+        /// <param name="waitTimeMs">The amount of time to wait in each iteration.</param>
+        /// <param name="iters">The total number of iterations.</param>
+        public void Sweep(double dx, int waitTimeMs, int iters)
+        {
+            // The wait time must be positive or else Thread.Sleep will not work properly.
+            if (waitTimeMs <= 0)
+            {
+                throw new ArgumentException("waitTimeMs must be a positive number.");
+            }
+
+            for (int i = 0; i < iters; ++i)
+            {
+                Move(dx);
+                Thread.Sleep(waitTimeMs);
             }
         }
 

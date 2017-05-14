@@ -54,11 +54,7 @@ namespace EverWingForever
 
                 // In this loop, each strafe (left or right) takes 50ms.
                 int dir = (_iter % 2 == 0) ? 1 : -1;
-                for (int i = 0; i < 10; ++i)
-                {
-                    Move(dir * 0.1);
-                    Thread.Sleep(5);
-                }
+                Sweep(dir * 0.1, 5, 10);
             }
             else
             {

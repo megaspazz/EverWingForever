@@ -17,17 +17,14 @@ namespace EverWingForever
     {
         protected override void RunInternal()
         {
-            for (int i = 0; i < 10; ++i)
-            {
-                MoveRight(0.1);
-                Thread.Sleep(5);
-            }
+            SweepRight(0.1, 5, 10);
+            SweepLeft(0.1, 5, 10);
+        }
 
-            for (int i = 0; i < 10; ++i)
-            {
-                MoveLeft(0.1);
-                Thread.Sleep(5);
-            }
+        // Finish with the character in the middle of the screen and the cursor on the character.
+        protected override void FinishInternal()
+        {
+            MoveRight(0.5);
         }
     }
 }
