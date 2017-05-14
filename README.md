@@ -6,11 +6,11 @@ EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
 1.  Download Git.  Since this program only works on Windows as far as I know, you might as well get Git for Windows.  You can just Google it and download and install the latest version.
 2.  Navigate to the folder where you want to save the source code.  Git for Windows has a convenient integration with the right-click context menu option "Open Git Bash here" to make things easier.
 3.  To get the repository the first time:
-  a.  `git clone https://github.com/megaspazz/EverWingForever.git` Note that this will create a new folder in your current directory.
-  b.  `cd EverWingForever` Navigate into the newly created folder.
-3.  To get updates, make sure that you're already in the "EverWingForever" folder.
-  a.  `git reset --hard HEAD` Remove all your local changes.  You might be do a `git stash` instead to save your local modifications for later.
-  b.  `git pull origin master` Get the most recent version.
+    1.  `git clone https://github.com/megaspazz/EverWingForever.git` Note that this will create a new folder in your current directory.
+    2.  `cd EverWingForever` Navigate into the newly created folder.
+4.  To get updates, make sure that you're already in the "EverWingForever" folder.
+    1.  `git reset --hard HEAD` Remove all your local changes.  You might be do a `git stash` instead to save your local modifications for later.
+    2.  `git pull origin master` Get the most recent version.
 
 ## In-Game Settings
 
@@ -29,9 +29,9 @@ EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
 ## Tips
 
 1.  Convenience Shortcuts are enabled by default.  These are keys that make it easier to use the program, but might interfere with normal usage of the desktop if you choose to leave the program open.
-  a.  Press [X] to start the bot.
-  b.  Press [Z] to stop the bot.
-  c.  Press [C] to toggle the bot.
+    1.  Press [X] to start the bot.
+    2.  Press [Z] to stop the bot.
+    3.  Press [C] to toggle the bot.
 2.  The hotkey for toggling Convenience Shortcuts on and off is [Ctrl + Alt + Shift + F6].
 
 ## How to use the SweepAssistBot
