@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Gma.System.MouseKeyHook;
+
+using Keys = System.Windows.Forms.Keys;
+
 namespace EverWingForever
 {
     /// <summary>
@@ -25,6 +29,9 @@ namespace EverWingForever
 
         // Manage the keyboard hooks for the bots.
         private BotsHookManager _hookManager = new BotsHookManager();
+
+        // Hooks for the main window UI.
+        private IKeyboardMouseEvents _uiHook = Hook.GlobalEvents();
 
         // A map of Radio Buttons to bots, which is used in the Radio Button events to update the currently selected bot.
         private Dictionary<object, EverWingBot> _map = new Dictionary<object, EverWingBot>();
@@ -43,6 +50,22 @@ namespace EverWingForever
 
             // Activate the default bot.
             _hookManager.Activate(_bot);
+
+            // Add events for the UI hook.
+            _uiHook.KeyDown += ProcessGlobalKeyDown;
+        }
+
+        private void ProcessGlobalKeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.Control && e.Shift && e.Alt)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.F6:
+                        this.chkEnableConveienceKeys.IsChecked ^= true;
+                        break;
+                }
+            }
         }
 
         private void UpdateSelelectedBot(object sender, RoutedEventArgs e)
@@ -53,6 +76,16 @@ namespace EverWingForever
                 _bot = activeBot;
                 _hookManager.Activate(_bot);
             }
+        }
+
+        private void chkEnableConveienceKeys_Checked(object sender, RoutedEventArgs e)
+        {
+            _hookManager.EnableConvenienceKeys = true;
+        }
+
+        private void chkEnableConveienceKeys_Unchecked(object sender, RoutedEventArgs e)
+        {
+            _hookManager.EnableConvenienceKeys = false;
         }
 
         #region Setting Coordinates (possibly deprecated code)

@@ -14,6 +14,8 @@ namespace EverWingForever
         private IKeyboardMouseEvents _keyHook = Hook.GlobalEvents();
         private EverWingBot _activeBot;
 
+        public bool EnableConvenienceKeys { get; set; }
+
         public BotsHookManager()
         {
             _keyHook.KeyDown += ProcessKeyboardHook;
@@ -54,6 +56,22 @@ namespace EverWingForever
                     case Keys.D3:
                         System.Drawing.Point pt = System.Windows.Forms.Cursor.Position;
                         System.Windows.Forms.Cursor.Position = new System.Drawing.Point(pt.X, pt.Y + 80);
+                        break;
+                }
+            }
+
+            if (this.EnableConvenienceKeys)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Z:
+                        _activeBot.Stop();
+                        break;
+                    case Keys.X:
+                        _activeBot.RunForeverAsync();
+                        break;
+                    case Keys.C:
+                        _activeBot.Run();
                         break;
                 }
             }
