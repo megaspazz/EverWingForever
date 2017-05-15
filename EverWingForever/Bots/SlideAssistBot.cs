@@ -37,7 +37,6 @@ namespace EverWingForever
             else
             {
                 MoveLeft(1);
-                MoveLeft(1);    // Move left twice in case it didn't work the first time for higher fault tolerance.
                 MoveRight(0.05);
                 Thread.Sleep(8);
                 _iter = 0;
