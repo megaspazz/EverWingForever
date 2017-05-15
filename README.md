@@ -57,3 +57,7 @@ First, you can customize the AssistBots using the constructors in MainWindow.xam
 There are two ways to drive the bot.  It's highly recommended that you use Convenience Shortcuts, since it makes it way easier to quickly control the bot.  The instructions below will assume that you use Convenience Shortcuts, although it is possible to use the other key combos if you wish.
 1.  Use [X] and [Z] to start and stop the bot, respectively.
 2.  Use [C] to toggle the bot on and off.  I find this method easier, since you only need to press one key.
+
+## Just the Executable
+
+Want to just run the program instead of pulling the code for the entire repository?  You can [download it here](https://app.box.com/s/b9zq9wxxtsj4q8vir8e9ryphgthvejyf).
