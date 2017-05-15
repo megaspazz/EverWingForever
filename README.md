@@ -60,4 +60,4 @@ There are two ways to drive the bot.  It's highly recommended that you use Conve
 
 ## Just the Executable
 
-Want to just run the program instead of pulling the code for the entire repository?  You can [download it here](https://app.box.com/s/b9zq9wxxtsj4q8vir8e9ryphgthvejyf).
+Want to just run the program instead of pulling the code for the entire repository?  You can [download it here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
