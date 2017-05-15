@@ -38,7 +38,7 @@ namespace EverWingForever
         //   |   |
         //   +---#
         // The # characters define the points that define the rectangle.
-        private Rectangle GAME_BOUNDS = new Rectangle(-971, 9, 661, 1177);
+        private Rectangle GAME_BOUNDS;
         
         private bool _running = false;
 
@@ -56,12 +56,12 @@ namespace EverWingForever
 
         public void SetTop(int top)
         {
-            GAME_BOUNDS = new Rectangle(GAME_BOUNDS.Left, top, GAME_BOUNDS.Bottom - top, GAME_BOUNDS.Width);
+            GAME_BOUNDS = new Rectangle(GAME_BOUNDS.Left, top, GAME_BOUNDS.Width, GAME_BOUNDS.Bottom - top);
         }
 
         public void SetBottom(int bottom)
         {
-            GAME_BOUNDS = new Rectangle(GAME_BOUNDS.Left, GAME_BOUNDS.Top, bottom - GAME_BOUNDS.Top, GAME_BOUNDS.Width);
+            GAME_BOUNDS = new Rectangle(GAME_BOUNDS.Left, GAME_BOUNDS.Top, GAME_BOUNDS.Width, bottom - GAME_BOUNDS.Top);
         }
 
         /// <summary>

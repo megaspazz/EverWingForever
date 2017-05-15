@@ -7,43 +7,73 @@
         mc:Ignorable="d"
         Title="EverWing Forever" Width="300" SizeToContent="Height">
     <StackPanel>
-        <GroupBox Header="Select Bot Type" Margin ="10" Padding="10">
+        <GroupBox x:Name="grpBots" Header="Select Bot Type" Margin ="10" Padding="10">
             <StackPanel>
                 <TextBlock Text="Farming Bots" FontWeight="Bold" />
-                <RadioButton x:Name="radStationaryBot" Content="Stationary Bot" ToolTip="Basic bot that just stands still in the middle.  Note that stopping this bot has up to 15 seconds of delay." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radSideStrategyBot" Content="Side Strategy Bot" ToolTip="Bot that teleports between the left and right sides of the screen.  Note that stopping this bot has up to 15 seconds of delay." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radRandomStrafeBot" Content="Random Strafe Bot" ToolTip="Bot that randomly moves around." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radSweepBot" Content="Sweep Bot" ToolTip="Bot that rapidly sweeps from left to right, and then right to left.  This allows it to kill everything on the screen collect almost everything that falls, but it will surely die to meteors." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radSlideBot" Content="Slide Bot (recommended)" IsChecked="True" ToolTip="Bot that just repeatedly scans from left to right.  This allows it to kill everything on the screen and collect almost everything that falls, but it will surely die to meteors.  Note that this is the currently the recommended bot for farming coins." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radStationaryBot" Tag="StationaryBot" Content="Stationary Bot" ToolTip="Basic bot that just stands still in the middle.  Note that stopping this bot has up to 15 seconds of delay." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSideStrategyBot" Tag="SideStrategyBot" Content="Side Strategy Bot" ToolTip="Bot that teleports between the left and right sides of the screen.  Note that stopping this bot has up to 15 seconds of delay." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radRandomStrafeBot" Tag="RandomStrafeBot" Content="Random Strafe Bot" ToolTip="Bot that randomly moves around." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSweepBot" Tag="SweepBot" Content="Sweep Bot" ToolTip="Bot that rapidly sweeps from left to right, and then right to left.  This allows it to kill everything on the screen collect almost everything that falls, but it will surely die to meteors." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSlideBot" Tag="SlideBot" Content="Slide Bot (recommended)" ToolTip="Bot that just repeatedly scans from left to right.  This allows it to kill everything on the screen and collect almost everything that falls, but it will surely die to meteors.  Note that this is the currently the recommended bot for farming coins." Checked="UpdateSelelectedBot" />
+                
                 <Separator Margin="0 10"/>
+                
                 <TextBlock Text="Assist Bots" FontWeight="Bold" />
-                <RadioButton x:Name="radSweepAssistBot" Content="Sweep Assist Bot" ToolTip="Bot that just goes from left to right, and then right to left.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
-                <RadioButton x:Name="radSlideAssistBot" Content="Slide Assist Bot" ToolTip="Bot that just goes from left to right repeatedly.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSweepAssistBot" Tag="SweepAssistBot" Content="Sweep Assist Bot" ToolTip="Bot that just goes from left to right, and then right to left.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
+                <RadioButton x:Name="radSlideAssistBot" Tag="SlideAssistBot" Content="Slide Assist Bot" ToolTip="Bot that just goes from left to right repeatedly.  This is for assisting the player in setting scores, such as temporarily activating it during a Power Flower or after clearing a boss to collect the rewards.  Note that this will not start new rounds automatically." Checked="UpdateSelelectedBot" />
+                
                 <Separator Margin="0 10 0 2"/>
                 <Separator Margin="0 2 0 10"/>
-                <CheckBox x:Name="chkEnableConveienceKeys" Content="Enable Convenience Keys" IsChecked="True" ToolTip="Enable shortcuts that are easy to use in game, but might be disruptive if you leave the program open while using your computer." Checked="chkEnableConveienceKeys_Checked" Unchecked="chkEnableConveienceKeys_Unchecked" />
+                
+                <CheckBox x:Name="chkEnableConveienceKeys" Content="Enable Convenience Keys" ToolTip="Enable shortcuts that are easy to use in game, but might be disruptive if you leave the program open while using your computer." Checked="EnableConvenienceKeysChanged" Unchecked="EnableConvenienceKeysChanged" />
             </StackPanel>
         </GroupBox>
         
-        <!-- Must configure coordinates in the code in EverWingBot.cs for now. -->
-        <GroupBox Header="Configure Coordinates" Margin="10" Padding="10" IsEnabled="False">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+        <GroupBox Header="Configure Coordinates" Margin="10" Padding="10">
+            <StackPanel>
+                <WrapPanel>
+                    <TextBlock Text="Current Cursor Coordinates: (" />
+                    <TextBlock x:Name="lblCursorX" />
+                    <TextBlock Text=", " />
+                    <TextBlock x:Name="lblCursorY" />
+                    <TextBlock Text=")" />
+                </WrapPanel>
+                
+                <Separator Margin="0 10" />
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="5" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                
+                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Left:" />
+                    <TextBox x:Name="txtLeft" Grid.Row="0" Grid.Column="2" IsReadOnly="True" />
+                
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="Top:" />
+                    <TextBox x:Name="txtTop" Grid.Row="0" Grid.Column="6" IsReadOnly="True" />
 
-                <Button x:Name="btnTop" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="(top default)" Click="btnTop_Click" />
-                <Button x:Name="btnLeft" Grid.Row="1" Grid.Column="0" Content="(left default)" Click="btnLeft_Click" />
-                <Button x:Name="btnRight" Grid.Row="1" Grid.Column="1" Content="(right default)" Click="btnRight_Click" />
-                <Button x:Name="btnBottom" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="(bottom default)" Click="btnBottom_Click" />
-            </Grid>
+                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Right:" />
+                    <TextBox x:Name="txtRight" Grid.Row="1" Grid.Column="2" IsReadOnly="True" />
+
+                    <TextBlock Grid.Row="1" Grid.Column="4" Text="Bottom:" />
+                    <TextBox x:Name="txtBottom" Grid.Row="1" Grid.Column="6" IsReadOnly="True" />
+                </Grid>
+                
+                <Separator Margin="0 10" />
+                
+                <Button x:Name="btnShrinkToFit" Content="Shrink to Fit" ToolTip="This will attempt to shrink the coordinate grid to find the game window inside.  Note that this requires that your selected coordinates must define a region that completely emcompasses the game region on all sides.  Additionally, the game window must be displaying a bright image, such as the main screen." Click="btnShrinkToFit_Click" />
+            </StackPanel>
         </GroupBox>
     </StackPanel>
 </Window>
