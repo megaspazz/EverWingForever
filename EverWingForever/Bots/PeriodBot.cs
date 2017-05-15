@@ -45,6 +45,7 @@ namespace EverWingForever
             _swGameOver.Restart();
 
             // Call child setup 
+            SetupPeriod();
         }
 
         protected override sealed void RunInternal()

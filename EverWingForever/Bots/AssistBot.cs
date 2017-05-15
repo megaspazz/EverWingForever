@@ -32,8 +32,11 @@ namespace EverWingForever
 
         protected override sealed void FinishInternal()
         {
-            // Move the character to the position specified, and hold the left mouse button down depending on the setting.
-            Move(_endPosition);
+            // Move the character to the position specified.
+            MoveLeft(1);
+            MoveRight(_endPosition);
+
+            // Hold the left mouse button down depending on the setting.
             if (_leftDown)
             {
                 InputWrapper.LeftDown();

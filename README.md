@@ -48,7 +48,7 @@ It is required to configure the coordinates the first time you use the program, 
 
 ## How to use the AssistBots
 
-This is basically just the movement part of the SweepBot and SlideBot.  They only move around and do not do anything to start a new round or close the Level Up popup window.
+This is basically just the movement part of the SweepBot and SlideBot.  They only move around and do not do anything to start a new round or close the Level Up popup window.  Stopping the AssistBots should also be a little more responsive than their farming counterparts, although it may be unnoticeable.
 
 First, you can customize the AssistBots using the constructors in MainWindow.xaml.cs for a few settings:
 1.  The ending position determines where the Assist will put the character when it stops.  A value of 0 is the far-left side and a value of 1 is the far-right side.  For example, I like using a value of 0.5 to put it right in the middle when it's done.
