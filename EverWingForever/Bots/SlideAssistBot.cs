@@ -32,14 +32,14 @@ namespace EverWingForever
             if (_iter > 0)
             {
                 MoveRight(0.1);
-                Thread.Sleep(10);
+                Thread.Sleep(8);
             }
             else
             {
                 MoveLeft(1);
                 MoveLeft(1);    // Move left twice in case it didn't work the first time for higher fault tolerance.
                 MoveRight(0.05);
-                Thread.Sleep(10);
+                Thread.Sleep(8);
                 _iter = 0;
             }
             _iter = (_iter + 1) % 10;
