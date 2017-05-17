@@ -31,6 +31,10 @@ It is required to configure the coordinates the first time you use the program, 
 	* [Ctrl + Alt + Shift + ,] will set the bottom and right coordinates to the XY position of your mouse cursor.
 2.  When you have set an initial estimate for the bounds, click the "Shrink to Fit" button to automatically adjust the game region to exactly fit the game.  Note that this requires that the bounds you set earlier fully contain the game, such that none of the coordinates are within the game region.  Additionally, the game must be displaying something bright, without any other windows covering up the game area.  For best results, just do it from the main game screen.
 
+NOTE:  There is currently a known issue that sometimes the character won't move or will be stuck on one side after using "Shrink to Fit".  This is because one of the border column of pixels is actually not responsive to user input.  To fix this, you can manually adjust the left and right boundaries to be barely within the game region using the shortcuts above.  After you manually set the boundaries, don't click on "Shrink to Fit" or it may mess up your settings.
+
+NOTE:  The input for the coordinates are intentionally not editable.  This is because I didn't want to write any validation code for user input.  Perhaps this will change in a future release, but I think it's easier just to use the shortcuts anyway.
+
 ## Instructions
 
 1.  In the UI, select a bot to use.  It is recommended to just use the default Slide Bot because it is probably the fastest for farming coins.
@@ -46,6 +50,16 @@ It is required to configure the coordinates the first time you use the program, 
     3.  Press [C] to toggle the bot.
 2.  The hotkey for toggling Convenience Shortcuts on and off is [Ctrl + Alt + Shift + F6].
 
+## Farming Help
+
+1.  It probably goes without saying, but you should use Lily (2x Coins) for farming.
+2.  Since the bot usually dies to the first meteor, most of the enemies encountered will be very weak, so it's recommended that you just upgrade your gun really high so you can easily clear everything.
+3.  Certain dragons are more efficient for farming than others.  Since the enemies are weak, it doesn't really matter what dragons you use if your gun level is high enough.  I think these effects are pretty good:
+    * Item Drop Rate:  More items is obviously better.  This bonus also always comes with the Item Duration bonus.
+	* Rush Flower Drop Rate:  The bot makes really good use of Rush Flowers because it clears everything quickly and collects all the drops.  It is also the bot's only real chance of avoiding meteors.
+    * Double Gems:  Gems actually make up a decent amount of the income, perhaps around 20%.  However, I'm not sure if this one is as good as the Rush Flower.
+	* Item Duration:  Items lasting longer helps increase your income, especially the Magnet and the Rush Flower.  It's better if you can just get this one with the Item Drop Rate if you have the proper Legendaries.
+
 ## How to use the AssistBots
 
 This is basically just the movement part of the SweepBot and SlideBot.  They only move around and do not do anything to start a new round or close the Level Up popup window.  Stopping the AssistBots should also be a little more responsive than their farming counterparts, although it may be unnoticeable.
@@ -60,4 +74,4 @@ There are two ways to drive the bot.  It's highly recommended that you use Conve
 
 ## Just the Executable
 
-Want to just run the program instead of pulling the code for the entire repository?  You can [download it here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
+Want to just run the program instead of pulling the code for the entire repository?  You can [download the 64-bit version here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  If you have a 32-bit computer, you can [download the 32-bit version here](https://app.box.com/s/jnxmrt71vvrv8x8fryi36trkxv4wv4nn).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
