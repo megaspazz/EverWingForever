@@ -49,6 +49,7 @@ NOTE:  The input for the coordinates are intentionally not editable.  This is be
     2.  Press [Z] to stop the bot.
     3.  Press [C] to toggle the bot.
 2.  The hotkey for toggling Convenience Shortcuts on and off is [Ctrl + Alt + Shift + F6].
+3.  If you are already at the level cap of 50, you can change the `_gamesToLevelUp` variable to some arbitrarily high number so that it won't ever waste time trying to click the OK button in the Level Up popup.  This is a very small micro-optimization that probably doesn't save that much time, though.
 
 ## Farming Help
 
