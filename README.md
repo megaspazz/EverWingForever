@@ -60,6 +60,10 @@ NOTE:  The input for the coordinates are intentionally not editable.  This is be
 	* Rush Flower Drop Rate:  The bot makes really good use of Rush Flowers because it clears everything quickly and collects all the drops.  It is also the bot's only real chance of avoiding meteors.
     * Double Gems:  Gems actually make up a decent amount of the income, perhaps around 20%.  However, I'm not sure if this one is as good as the Rush Flower.
 	* Item Duration:  Items lasting longer helps increase your income, especially the Magnet and the Rush Flower.  It's better if you can just get this one with the Item Drop Rate if you have the proper Legendaries.
+4.  The maximum number of coins you can hold at any given time is 999,999.  You will want to make sure you stop the bot and spend your coins before you reach this amount.
+5.  To maximize the chances of hatching legendaries, you should try to spend as many coins at one time as possible, restarting the game every time you get a legendary to click on the "Claim Bonus" link that is automatically generated in the chat.  Every time you click that, it gives you a +5% chance to get Legendaries for a short time, so you can stack them the multiplier by yourself by hatching a large number of dragons at one time.  You can actually even hatch a couple more by having completed Adventure quests without claiming the rewards.
+
+There is a [spreadsheet](https://docs.google.com/spreadsheets/d/1P8jmvRxwRBXb2tFHHe7KKVPEBCCd-pJBxGmQ7BIB410/edit?usp=sharing) for seeing what combination is the best for farming.  It seems like the combination of the Fea line (+40% Rush Flowers) and the Xiaolong/Skout lines (+40% Item Drop Rate and Item Duration) have the highest income.  The Avi/Umbra lines (2x gems) seem to be decent replacements for the Fea line sidekick.
 
 ## How to use the AssistBots
 
@@ -76,3 +80,7 @@ There are two ways to drive the bot.  It's highly recommended that you use Conve
 ## Just the Executable
 
 Want to just run the program instead of pulling the code for the entire repository?  You can [download the 64-bit version here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  If you have a 32-bit computer, you can [download the 32-bit version here](https://app.box.com/s/jnxmrt71vvrv8x8fryi36trkxv4wv4nn).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
+
+## Live Demo
+
+This isn't going to be online 24/7, but if you're lucky, you might be able to see what the bot does on [my stream](https://www.twitch.tv/megaspazz).
