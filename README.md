@@ -12,6 +12,12 @@ EverWing on Facebook Messenger is a pretty fun game if you don't have to grind!
     1.  `git reset --hard HEAD` Remove all your local changes.  You might be do a `git stash` instead to save your local modifications for later.
     2.  `git pull origin master` Get the most recent version.
 
+## Just the Executable
+
+Want to just run the program instead of pulling the code for the entire repository?  You can [download the 64-bit version here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  If you have a 32-bit computer, you can [download the 32-bit version here](https://app.box.com/s/jnxmrt71vvrv8x8fryi36trkxv4wv4nn).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
+
+These pre-built binaries should be sufficient for most people, but do note that these binaries may be slightly out of date with the repository, so if you want the latest and the greatest, you should get the code and build from source yourself.  
+
 ## In-Game Settings
 
 1.  Make sure that you have your DPI at 100% in your Windows settings.  This might be automatically set to something else if you have a high resolution display on a small laptop or a 4K monitor.  If you change the DPI, you may have to restart your computer for the coordinate computations to take effect.  Since it was not extensively tested on other DPI settings, it is probably easiest to just set the DPI to 100% for now.
@@ -76,10 +82,6 @@ First, you can customize the AssistBots using the constructors in MainWindow.xam
 There are two ways to drive the bot.  It's highly recommended that you use Convenience Shortcuts, since it makes it way easier to quickly control the bot.  The instructions below will assume that you use Convenience Shortcuts, although it is possible to use the other key combos if you wish.
 1.  Use [X] and [Z] to start and stop the bot, respectively.
 2.  Use [C] to toggle the bot on and off.  I find this method easier, since you only need to press one key.
-
-## Just the Executable
-
-Want to just run the program instead of pulling the code for the entire repository?  You can [download the 64-bit version here](https://app.box.com/s/552uuufa8f9dobmugv88u2mii33aq4je).  If you have a 32-bit computer, you can [download the 32-bit version here](https://app.box.com/s/jnxmrt71vvrv8x8fryi36trkxv4wv4nn).  You will have to extract the ZIP file, and make sure that you keep the EXE and DLL files together in the same folder when you run the program.
 
 ## Live Demo
 
