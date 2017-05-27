@@ -19,8 +19,8 @@ namespace EverWingForever
         private static readonly double NEW_GAME_Y = 0.75;
 
         // Relative X & Y coordinates that represent the location of the "OKAY" button when a round ends.
-        private static readonly double GAME_OVER_OK_X = 0.75;
-        private static readonly double GAME_OVER_OK_Y = 0.85;
+        private static readonly double GAME_OVER_OK_X = 0.25;
+        private static readonly double GAME_OVER_OK_Y = 0.9;
 
         // Relative X & Y coordinates that represent the location of the "OKAY!" button in the "LEVEL UP!" popup.
         // Note that this coordinate will also click and purchase pre-game power-ups when it starts, so be careful!
