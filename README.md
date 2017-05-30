@@ -18,6 +18,12 @@ Want to just run the program instead of pulling the code for the entire reposito
 
 These pre-built binaries should be sufficient for most people, but do note that these binaries may be slightly out of date with the repository, so if you want the latest and the greatest, you should get the code and build from source yourself.  
 
+To update your executable, just download from the links again, but there aren't any official version numbers.
+
+## Updates
+
+Currently, there are no automatic updates, so if the program doesn't seem to work anymore, please update using the instructions above.  The game itself sometimes receives updates, so that means that the bot might stop working if the UI changes enough.  I will try to keep it up-to-date for now, but if I'm slow to come out with a patch, feel free to submit an issue on the Github repo.
+
 ## In-Game Settings
 
 1.  Make sure that you have your DPI at 100% in your Windows settings.  This might be automatically set to something else if you have a high resolution display on a small laptop or a 4K monitor.  If you change the DPI, you may have to restart your computer for the coordinate computations to take effect.  Since it was not extensively tested on other DPI settings, it is probably easiest to just set the DPI to 100% for now.
